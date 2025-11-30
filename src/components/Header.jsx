@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import { Bell, X, Plus, Edit2, Trash2, Check } from 'lucide-react';
 
-import logo from '../assets/logo.jpeg';
+import logo from '../assets/logo_nrjt.png';
 
 const Header = ({ 
   isStudentMode, 
