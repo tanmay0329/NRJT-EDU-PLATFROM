@@ -9,15 +9,16 @@ import Footer from './components/Footer';
 import { structure } from './data/structure';
 import './App.css';
 
+import resourceData from './resources.json';
+
 function App() {
   const [activeStandardId, setActiveStandardId] = useState(structure[0].id);
   const [activeBoard, setActiveBoard] = useState(structure[0].boards[0]);
-  const [isStudentMode, setIsStudentMode] = useState(false);
+  const [isStudentMode, setIsStudentMode] = useState(true);
   
   // State for storing resources
   // Structure: { [standardId]: { [board]: { [type]: [{ folderName, files: [] }] } } }
-  const [resources, setResources] = useState({});
-
+  const [resources, setResources] = useState(resourceData);
   const activeStandardData = structure.find(s => s.id === activeStandardId);
 
   // Reset board when standard changes if the current board is not available in the new standard
@@ -31,7 +32,7 @@ function App() {
   };
 
   const [activeCategory, setActiveCategory] = useState(null); // 'video' | 'pdf' | null
-  
+  console.log("rr:", resources);
   // Announcements State - Load from localStorage on mount
   const [announcements, setAnnouncements] = useState(() => {
     const saved = localStorage.getItem('announcements');
@@ -232,7 +233,6 @@ function App() {
               onUpload={(folder, file) => handleUpload(folder, file, 'video')}
             />
           )}
-          
           <ResourceSection 
             type="video" 
             resources={currentResources.video || []}
@@ -257,7 +257,6 @@ function App() {
               onUpload={(folder, file) => handleUpload(folder, file, 'pdf')}
             />
           )}
-
           <ResourceSection 
             type="pdf" 
             resources={currentResources.pdf || []}

@@ -53,14 +53,7 @@ const Header = ({
             <h1 className="logo">EduPlatform</h1>
           </div>
           
-          <div className="header-actions">
-            <button 
-              className={`mode-toggle ${isStudentMode ? 'student' : 'admin'}`}
-              onClick={onToggleMode}
-            >
-              <span className="mode-label">{isStudentMode ? 'Student View' : 'Admin View'}</span>
-            </button>
-            
+          <div className="header-actions">   
             <button className="announcements-btn" onClick={() => setIsModalOpen(true)}>
               <Bell size={18} />
               Announcements
