@@ -4,8 +4,14 @@
             "video": [
                 {
                     "folderName": "Chapter 1 - Structure of Atom",
-                    "files": [],
-                    "link": "https://youtu.be/4u3iHAH51jw?si=gO4P0gQWGuY2bCBE"
+                    "files": [
+                        {
+                            "name": "📺 Structure of Atom (One Shot)",
+                            "size": "Video",
+                            "date": "Dec 16, 2025",
+                            "link": "https://www.youtube.com/watch?v=EPxFcE_JlE0&t=5s"
+                        }
+                    ]
                 }
             ],
             "pdf": [

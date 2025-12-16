@@ -593,6 +593,7 @@
   align-items: stretch;
   background-color: var(--surface);
   transition: background-color 0.2s;
+  cursor: pointer;
 }
 
 .folder-header:hover {
@@ -681,6 +682,25 @@
 .file-actions {
   display: flex;
   align-items: center;
+}
+
+.link-icon-btn {
+  padding: 0.5rem;
+  margin-right: 0.5rem;
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.link-icon-btn:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  color: var(--primary);
 }
 
 .category-grid {

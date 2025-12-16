@@ -44,6 +44,7 @@ function App() {
       }
     }
     return [
+      { id: 2, text: "The Journey Begins — My YouTube Channel Is Live 🎥", date: new Date().toLocaleDateString() },
       { id: 1, text: "New courses for 2025 are now available! Enroll today.", date: new Date().toLocaleDateString() }
     ];
   });

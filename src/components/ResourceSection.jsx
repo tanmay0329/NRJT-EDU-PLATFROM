@@ -30,7 +30,13 @@ const ResourceSection = ({ type, resources = [], isAdmin = false, onEdit, onRena
   };
 
   const handleFileClick = (file, folderName) => {
-    // Construct the path to the file based on the folder structure
+    // If the file has a link property, open that link
+    if (file.link) {
+      window.open(file.link, '_blank');
+      return;
+    }
+    
+    // Otherwise, construct the path to the file based on the folder structure
     // Include the base URL for Vite
     const filePath = `/NRJT-EDU-PLATFROM/9th/CBSE/${folderName}/${file.name}`;
     window.open(filePath, '_blank');
@@ -89,28 +95,36 @@ const ResourceSection = ({ type, resources = [], isAdmin = false, onEdit, onRena
       <div className="resource-list-container">
         {resources.map((folder, index) => (
           <div key={index} className="folder-item">
-            <div className="folder-header">
+            <div 
+              className="folder-header"
+              onClick={() => toggleFolder(folder.folderName)}
+            >
               <div 
                 className="folder-toggle-icon"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  toggleFolder(folder.folderName);
-                }}
               >
                 {expandedFolders[folder.folderName] ? <ChevronDown size={20} /> : <ChevronRight size={20} />}
               </div>
               
-              <div 
-                className={`folder-info ${folder.link ? 'has-link' : ''}`}
-                onClick={() => handleFolderClick(folder)}
-              >
+              <div className="folder-info">
                 <Folder size={20} className="folder-icon" />
                 <span className="folder-name">
                   {folder.folderName}
-                  {folder.link && <span className="link-indicator" title="Click to open link">🔗</span>}
                 </span>
                 <span className="file-count">({folder.files.length} files)</span>
               </div>
+
+              {folder.link && (
+                <button 
+                  className="link-icon-btn"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleFolderClick(folder);
+                  }}
+                  title="Open reference link"
+                >
+                  <LinkIcon size={16} />
+                </button>
+              )}
 
               {isAdmin && (
                 <button 
