@@ -35,7 +35,12 @@ function App() {
   const [announcements, setAnnouncements] = useState(() => {
     const saved = localStorage.getItem('announcements');
     const defaultAnnouncements = [
-      { id: 2, text: "The Journey Begins — My YouTube Channel Is Live 🎥", date: new Date().toLocaleDateString() },
+      { 
+        id: 2, 
+        text: "The Journey Begins — My YouTube Channel Is Live 🎥", 
+        date: new Date().toLocaleDateString(),
+        link: "https://www.youtube.com/@physicsbynikyya"
+      },
       { id: 1, text: "New courses for 2025 are now available! Enroll today.", date: new Date().toLocaleDateString() }
     ];
 
@@ -43,20 +48,26 @@ function App() {
       try {
         const parsed = JSON.parse(saved);
 
-        const hasNewAnnouncement = parsed.some(a => a.id === 2 || a.text.includes('Journey Begins'));
+        // Update existing announcement if found
+        const updatedParsed = parsed.map(a => {
+          if (a.id === 2) {
+            return { ...a, link: "https://www.youtube.com/@physicsbynikyya" };
+          }
+          return a;
+        });
+
+        const hasNewAnnouncement = updatedParsed.some(a => a.id === 2);
         
         if (!hasNewAnnouncement) {
-
-          return [defaultAnnouncements[0], ...parsed];
+          return [defaultAnnouncements[0], ...updatedParsed];
         }
-        return parsed;
+        return updatedParsed;
       } catch (e) {
         console.error('Failed to parse announcements from localStorage', e);
       }
     }
     return defaultAnnouncements;
   });
-
 
   useEffect(() => {
     localStorage.setItem('announcements', JSON.stringify(announcements));

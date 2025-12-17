@@ -17,7 +17,7 @@ const Header = ({
   const [editingId, setEditingId] = useState(null);
   const [editText, setEditText] = useState('');
 
-  const latestAnnouncement = announcements.length > 0 ? announcements[0].text : 'Welcome to EduPlatform!';
+  const latestAnnouncement = announcements.length > 0 ? announcements[0] : { text: 'Welcome to EduPlatform!' };
 
   const handleAdd = (e) => {
     e.preventDefault();
@@ -45,7 +45,18 @@ const Header = ({
       <header className="header-container">
         <div className="announcement-bar">
           <Bell size={16} />
-          <span>{latestAnnouncement}</span>
+          {latestAnnouncement.link ? (
+            <a 
+              href={latestAnnouncement.link} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              style={{ color: 'inherit', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.5rem' }}
+            >
+              <span>🔗 {latestAnnouncement.text}</span>
+            </a>
+          ) : (
+            <span>{latestAnnouncement.text}</span>
+          )}
         </div>
         <div className="main-header">
           <div className="logo-container">
