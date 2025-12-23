@@ -30,7 +30,7 @@ const Header = ({ announcements = [] }) => {
         <div className="main-header">
           <div className="logo-container">
             <img src={logo} alt="Nikhil Physics Logo" className="logo-image" />
-            <h1 className="logo">Nikhil Physics</h1>
+            <h1 className="logo">Chhatrapati Physics</h1>
           </div>
           
           <div className="header-actions">   

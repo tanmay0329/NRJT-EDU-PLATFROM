@@ -6,7 +6,7 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer-content">
         <div className="footer-section">
-          <h3>NRJT - EduPlatform</h3>
+          <h3>Chhatrapati Physics - EduPlatform</h3>
           <p>Making you understand, not memorize — not teaching physics, but unlocking it.</p>
         </div>
         
