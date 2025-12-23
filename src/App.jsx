@@ -50,7 +50,7 @@ function App() {
         // Update existing announcement if found
         const updatedParsed = parsed.map(a => {
           if (a.id === 2) {
-            return { ...a, link: "https://www.youtube.com/@physicsbynikyya" };
+            return { ...a, link: "https://www.youtube.com/@chhatrapati.physics" };
           }
           return a;
         });
